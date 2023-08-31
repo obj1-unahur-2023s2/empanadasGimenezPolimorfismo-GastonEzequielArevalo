@@ -1,11 +1,15 @@
 import empleados.*
 
 object gimenez {
-	var fondoParaSueldos = 3000000
+	var dinero = 3000000
 	
-	method pagarA(empleado,sueldoAPagar) {
-    	fondoParaSueldos = fondoParaSueldos - empleado.sueldo()
-    	empleado.cobrarSueldo(sueldoAPagar)
+	method dinero(){
+		return dinero
+	}
+	
+	method pagarA(empleado) {
+    	dinero -= empleado.sueldo()
+    	empleado.cobrarSueldo()
 	}
 
 }

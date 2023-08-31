@@ -1,35 +1,48 @@
+import duenio.*
+
 object galvan {
-	var sueldo = 0 
+	var property sueldo = 150000
+	var totalDinero = 0 
+	var totalDeuda = 0
 	
-	method sueldo(){
-		return sueldo
+	method cobrarSueldo(){
+		totalDinero += 0.max(sueldo - totalDeuda)
+		totalDeuda = 0.max(totalDeuda - sueldo)
 	}
 	
-	method cobrarSueldo(sueldoARecibir){
-		sueldo += sueldoARecibir
-	}
 	
 	method gastar(cuanto){
-		sueldo -= cuanto
+		totalDeuda += 0.max(cuanto - totalDinero)
+		totalDinero = 0.max(totalDinero - cuanto)
 	}
 	
 	method totalDeuda(){
-		return 0.min(sueldo)
+		return totalDeuda
 	}
 	
 	method totalDinero(){
-		return 0.max(sueldo)
+		return totalDinero
 	}
 }
 
 object baigorria{
-	var sueldo = 0
-	
-	method cobrarSueldo(sueldoARecibir){
-		sueldo += sueldoARecibir
-	}
+	const montoPorEmpanada = 150
+	var cantidadDeEmpanadasVendidas = 1000
+	var totalCobrado = 0
 	
 	method totalCobrado(){
-		return sueldo
+		return totalCobrado
+	}
+	
+	method cobrarSueldo(){
+		totalCobrado = self.sueldo()
+	}
+	
+	method sueldo(){
+		return montoPorEmpanada * cantidadDeEmpanadasVendidas
+	}
+	
+	method venderEmpanada(){
+		cantidadDeEmpanadasVendidas +=  1
 	}
 }

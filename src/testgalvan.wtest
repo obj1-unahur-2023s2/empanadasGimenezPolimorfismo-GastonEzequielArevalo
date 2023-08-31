@@ -1,0 +1,40 @@
+import duenio.*
+import empleados.*
+
+describe "Test sobre las finanzas galvan"{
+	
+	method initialize(){
+		galvan.cobrarSueldo()
+	}
+	
+	method estaSinDeuda(){
+		galvan.totalDeuda == 0
+	}
+	
+	test "Galvan arranca con dauda cero" {
+		
+		assert.equals(0, galvan.totalDeuda())
+	}
+	
+	test "Galvan arranca con dinero en cero" {
+		
+		assert.equals(0, galvan.totalDinero())
+	}
+	
+	test "Galvan sueldo es de 150000" {
+		
+		assert.equals(150000, galvan.sueldo())
+	}
+	
+	test "Galvan gasta 40000, deuda debe ser 40000"{
+		galvan.gastar(40000)
+		assert.equals(0,galvan.totalDeuda())
+	}
+	
+	test "Galvan gasta 40000, dinero debe ser 0"{
+		galvan.gastar(40000)
+		assert.equals(0,galvan.totalDinero())
+	}
+	
+	
+}
